@@ -1,24 +1,20 @@
 const fs = require('fs');
-const path = require('path');
 
-const nombreArchivo = "productos.json"
-const pathObj = path.parse(__filename);
-const archivoRuta = path.join(pathObj.dir,nombreArchivo);
 
 class Contenedor { 
-    constructor(nombreArchivo){
-            this.nombreArchivo = nombreArchivo;
+    constructor(archivoRuta){
+            this.archivoRuta = archivoRuta;
     }
     
 async obtenerProductos(){
-    const dato = await fs.promises.readFile(nombreArchivo, 'utf-8');
+    const dato = await fs.promises.readFile(this.archivoRuta, 'utf-8');
     return JSON.parse(dato);
 }
 
 async saveProductos(productos){
     const data = JSON.stringify(productos, null, '\t');
     JSON.stringify(productos, null, '\t');
-    await fs.promises.writeFile(nombreArchivo, data)
+    await fs.promises.writeFile(this.archivoRuta, data)
 }
 
 async getAll(){
@@ -77,32 +73,5 @@ async deleteAll(){
 }
 }
 
-const producto = new Contenedor(nombreArchivo);
-
-
-const main = async () => {
-    console.log('1) Save ')
-    const Unproducto = { title: 'ropa', price: 24};
-    await producto.save(Unproducto);
-    console.log(await producto.getAll());
-
-    console.log('2) getById ')
-    const dosProducto = await producto.getById(1);
-    console.log(dosProducto);
-
-    console.log('3) getAll ') 
-    const productos = await producto.getAll();
-    console.log(productos);
-
-    console.log('4) deleteById ')
-    await producto.deleteById(1);
-    console.log(await producto.getAll());
-
-    console.log('5) deleteAll ')
-    await producto.deleteAll();
-    console.log(await producto.getAll());
-    
-}
-
-main();
+module.exports=Contenedor;
 
