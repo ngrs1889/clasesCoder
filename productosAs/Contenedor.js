@@ -33,6 +33,15 @@ async getById(id) {
     return productos[indice];
 }
 
+async getProductoRandom() {
+    const productos = await this.obtenerProductos();
+    const limiteMaximo = productos.length;
+
+    const random = Math.floor(Math.random() * limiteMaximo)
+    return productos[random];
+}
+
+
 async save(data){
     if(!data.title || !data.price || typeof data.title !== 'string' || typeof data.price !== 'number') throw new Error('Datos invalidos');
     const productos = await this.obtenerProductos();
