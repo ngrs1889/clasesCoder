@@ -26,7 +26,6 @@ app.get('/productos', async (req, res) => {
         res.json(productos);
 }
 )
-console.logo("pepito")
 
 app.get('/productosRandom', async (req, res) => {
     const productos = await producto.getProductoRandom();
