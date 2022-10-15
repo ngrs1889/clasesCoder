@@ -4,7 +4,7 @@ const path = require('path');
 const { appendFile } = require('fs');
 
 const app = express();
-const puerto = 8085;
+const puerto = process.env.puerto || 8080;
 const server = app.listen(puerto, () =>
   console.log('Server up en puerto', puerto)
 );
@@ -21,14 +21,14 @@ const producto = new Contenedor(nombreArchivo);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/api1', async (req, res) => {
+app.get('/productos', async (req, res) => {
     const productos = await producto.getAll();
         res.json(productos);
 }
 )
 
 
-app.get('/api2', async (req, res) => {
+app.get('/productosRandom', async (req, res) => {
     const productos = await producto.getProductoRandom();
     res.json(productos);
     })
