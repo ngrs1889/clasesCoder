@@ -43,7 +43,6 @@ async getProductoRandom() {
 
 
 async save(data){
-    if(!data.title || !data.price || typeof data.title !== 'string' || typeof data.price !== 'number') throw new Error('Datos invalidos');
     const productos = await this.obtenerProductos();
 
     let id = 1
