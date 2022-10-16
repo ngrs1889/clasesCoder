@@ -16,6 +16,8 @@ rutaProductos.get('/', async (req, res) => {
 }
 )
 
+
+
 rutaProductos.get('/:id', async (req, res) => {
     const id = req.params.id;
     const productos = await producto.getById(id);
@@ -23,6 +25,10 @@ rutaProductos.get('/:id', async (req, res) => {
     })
     let id = 1;
     module.exports = rutaProductos;
+
+
+
+
 
 rutaProductos.post('/', async (req, res) => {
     const data = req.body;
@@ -50,6 +56,9 @@ rutaProductos.post('/', async (req, res) => {
 		data: ultimo
 })
 });
+
+
+
 
 rutaProductos.put('/:id', async (req, res) =>{
     const id = req.params.id;
@@ -80,6 +89,10 @@ rutaProductos.put('/:id', async (req, res) =>{
 		data: nuevo,
 	})
 })
+
+
+
+
 rutaProductos.delete('/:id', async (req, res) => {
     const id = req.params.id;
 

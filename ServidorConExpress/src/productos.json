@@ -1,32 +1,27 @@
 [
 	{
-		"title": "\"escooba\"",
-		"price": "50",
-		"id": ":1"
+		"title": "perro",
+		"price": "1",
+		"id": ":4"
 	},
 	{
-		"title": "Calculadora",
-		"price": 234.56,
-		"id": 2
+		"title": "gato",
+		"price": "47",
+		"idnuevo": 0
 	},
 	{
-		"title": "Globo Terráqueo",
-		"price": 345.67,
-		"id": 3
+		"title": "gato",
+		"price": "47",
+		"idBuscado": "2"
 	},
 	{
-		"title": "\"escoba\"",
-		"price": "500",
-		"id": 4
-	},
-	{
-		"title": "\"barril\"",
-		"price": "500",
-		"id": 5
-	},
-	{
-		"title": "\"maceta\"",
-		"price": "50",
+		"title": "maceta",
+		"price": 50,
 		"id": 6
+	},
+	{
+		"title": "gato",
+		"price": "47",
+		"idBuscado": "2"
 	}
 ]
