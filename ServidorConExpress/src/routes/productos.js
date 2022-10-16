@@ -33,8 +33,7 @@ rutaProductos.get('/:id', async (req, res) => {
 rutaProductos.post('/', async (req, res) => {
     const data = req.body;
     console.log(req.body);
-    const productoss = await producto.obtenerProductos();
-    id = productoss[productoss.length -1]
+
     const { title, price, thumbail} = req.body;
     console.log(title)
     if (!title || !price || !thumbail){
@@ -63,15 +62,14 @@ rutaProductos.post('/', async (req, res) => {
 
 rutaProductos.put('/:id', async (req, res) =>{
     const id = req.params.id;
-    const {title, price} = req.body;
+    const {title, price, thumbail} = req.body;
 
 	if(id < 0){
 		return res.status(404).json({
 			msg: "el usuario no existe"
 		})
 	}
-
-	if(!title || !price) {
+	if(!title || !price || !thumbail) {
 		return res.status(400).json({
 			msg: "Campos invalidos :( "
 		})
@@ -80,7 +78,6 @@ rutaProductos.put('/:id', async (req, res) =>{
     const nuevoProducto = {
         title,
         price,
-        id,
         thumbail
     }
 

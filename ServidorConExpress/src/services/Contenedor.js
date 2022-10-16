@@ -52,7 +52,7 @@ async save(data){
         title: data.title,
         price:precio,
         id: id,
-        thumbail: thumbail
+        thumbail: data.thumbail
     }
 
     productos.push(nuevoProducto);
@@ -83,24 +83,34 @@ async deleteAll(){
 }
 
 
-async putID(id, nuevoProducto){
+async putID(idb, nuevoProducto){
     const productos = await this.obtenerProductos();
     const title = nuevoProducto.title;
     const price = Number(nuevoProducto.price);
-    const idN = Number(id);
-    const indice = productos.findIndex((unProducto) => unProducto.id == idN);
+    const id = Number(idb);
+    const thumbail = nuevoProducto.thumbail;
+    let contador = 0;
+
+    for (let i = 0; i<productos.length; i++){
+        if(id == productos[contador].id) 
+    {
 
     const productoGuardar = {
         title,
         price,
-        idN
+        id,
+        thumbail
     }
  
     console.log(productoGuardar)
-    productos.splice(indice, 1, productoGuardar);
+    productos.splice(contador, 1, productoGuardar);
     this.saveProductos(productos);
 
     return productoGuardar;
+    
+}
+contador++;
+}
 }
 
 }
