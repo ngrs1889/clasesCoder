@@ -24,7 +24,7 @@ return productos;
 
 async getById(id) {
     const productos = await this.obtenerProductos();
-    const indice = productos.findIndex((unProducto) => unProducto.id.toString() === id);
+    const indice = productos.findIndex((unProducto) => unProducto.id == id);
     if(indice <0) {
         return('El producto no existe');
     }
@@ -43,14 +43,14 @@ async getProductoRandom() {
 
 async save(data){
     const productos = await this.obtenerProductos();
-
+    const precio = Number(data.price);
     let id = 1
     if(productos.length){
         id = productos[productos.length -1].id + 1
     }
     const nuevoProducto = {
         title: data.title,
-        price: data.price,
+        price:precio,
         id: id
     }
 
@@ -64,7 +64,7 @@ async save(data){
 async deleteById(idBuscado){
     const productos = await this.obtenerProductos();
     
-    const indice = productos.findIndex((unProducto) => unProducto.id.toString() === idBuscado);
+    const indice = productos.findIndex((unProducto) => unProducto.id== idBuscado);
         let mensaje ="";
     if(indice<0){
         mensaje= ("no se pudo eliminar");
@@ -82,21 +82,20 @@ async deleteAll(){
 }
 
 
-async putID(idBuscado, nuevoProducto){
+async putID(id, nuevoProducto){
     const productos = await this.obtenerProductos();
     const title = nuevoProducto.title;
-    const price = nuevoProducto.price;
-    Number(price); Number(idBuscado);
-
-    const indice = productos.findIndex((unProducto) => unProducto.id == idBuscado);
+    const price = Number(nuevoProducto.price);
+    const idN = Number(id);
+    const indice = productos.findIndex((unProducto) => unProducto.id == idN);
 
     const productoGuardar = {
         title,
         price,
-        idBuscado
+        idN
     }
  
-
+    console.log(productoGuardar)
     productos.splice(indice, 1, productoGuardar);
     this.saveProductos(productos);
 

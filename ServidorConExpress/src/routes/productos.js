@@ -34,7 +34,7 @@ rutaProductos.post('/', async (req, res) => {
     const data = req.body;
     console.log(req.body);
     const productoss = await producto.obtenerProductos();
-    id = productoss[productoss.length -1].id
+    id = productoss[productoss.length -1]
     const { title, price} = req.body;
 
     if (!title || !price){
