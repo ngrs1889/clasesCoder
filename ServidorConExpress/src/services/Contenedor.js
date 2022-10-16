@@ -24,8 +24,7 @@ return productos;
 
 async getById(id) {
     const productos = await this.obtenerProductos();
-    const indice = productos.findIndex((unProducto) => unProducto.id === id);
-
+    const indice = productos.findIndex((unProducto) => unProducto.id == id);
     if(indice <0) {
         return('El producto no existe');
     }
@@ -43,43 +42,77 @@ async getProductoRandom() {
 
 
 async save(data){
-    if(!data.title || !data.price || typeof data.title !== 'string' || typeof data.price !== 'number') throw new Error('Datos invalidos');
     const productos = await this.obtenerProductos();
-
+    const precio = Number(data.price);
     let id = 1
     if(productos.length){
         id = productos[productos.length -1].id + 1
     }
     const nuevoProducto = {
         title: data.title,
-        price: data.price,
-        id: id
+        price:precio,
+        id: id,
+        thumbail: data.thumbail
     }
 
     productos.push(nuevoProducto);
 
     await this.saveProductos(productos);
+
+    return nuevoProducto;
 }
 
 async deleteById(idBuscado){
     const productos = await this.obtenerProductos();
-
-    const indice = productos.findIndex((unProducto) => unProducto.id === idBuscado);
-
+    
+    const indice = productos.findIndex((unProducto) => unProducto.id== idBuscado);
+        let mensaje ="";
     if(indice<0){
-        console.log("no se pudo eliminar");
-        return;
+        mensaje= ("no se pudo eliminar");
+        return mensaje;
     }
 
     productos.splice(indice,1);
 
     this.saveProductos(productos);
-    console.log("se elimino correctamente");
+    return mensaje = ("se elimino correctamente");
 }
 
 async deleteAll(){
     this.saveProductos([]);
 }
+
+
+async putID(idb, nuevoProducto){
+    const productos = await this.obtenerProductos();
+    const title = nuevoProducto.title;
+    const price = Number(nuevoProducto.price);
+    const id = Number(idb);
+    const thumbail = nuevoProducto.thumbail;
+    let contador = 0;
+
+    for (let i = 0; i<productos.length; i++){
+        if(id == productos[contador].id) 
+    {
+
+    const productoGuardar = {
+        title,
+        price,
+        id,
+        thumbail
+    }
+ 
+    console.log(productoGuardar)
+    productos.splice(contador, 1, productoGuardar);
+    this.saveProductos(productos);
+
+    return productoGuardar;
+    
+}
+contador++;
+}
+}
+
 }
 
 module.exports=Contenedor;
