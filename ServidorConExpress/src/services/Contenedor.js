@@ -58,6 +58,8 @@ async save(data){
     productos.push(nuevoProducto);
 
     await this.saveProductos(productos);
+
+    return nuevoProducto;
 }
 
 async deleteById(idBuscado){

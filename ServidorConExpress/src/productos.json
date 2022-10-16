@@ -18,5 +18,15 @@
 		"title": "\"escoba\"",
 		"price": "500",
 		"id": 4
+	},
+	{
+		"title": "\"barril\"",
+		"price": "500",
+		"id": 5
+	},
+	{
+		"title": "\"maceta\"",
+		"price": "50",
+		"id": 6
 	}
 ]

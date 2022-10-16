@@ -20,14 +20,13 @@ rutaProductos.get('/:id', async (req, res) => {
     const productos = await producto.getById();
     res.json(productos);
     })
-    const id = 1;
+    let id = 1;
     module.exports = rutaProductos;
 
 rutaProductos.post('/', async (req, res) => {
     const data = req.body;
     console.log(req.body);
     const productoss = await producto.obtenerProductos();
-    let id = 1
     id = productoss[productoss.length -1].id
     const { title, price} = req.body;
 
@@ -43,14 +42,10 @@ rutaProductos.post('/', async (req, res) => {
         
     }
 
-	const fileData = await fs.readFile(nombreArchivo, 'utf-8');
-	const productos = JSON.parse(fileData);
-	await producto.save(nuevoProducto);
-
-	await fs.writeFile(nombreArchivo, JSON.stringify(productos, null, '\t'));
+	const ultimo = await producto.save(nuevoProducto);
 
 	res.json({
 		msg: 'ok',
-		data: await producto.getById(id)
+		data: ultimo
 })
 });
