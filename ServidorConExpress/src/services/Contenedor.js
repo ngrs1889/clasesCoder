@@ -64,18 +64,18 @@ async save(data){
 
 async deleteById(idBuscado){
     const productos = await this.obtenerProductos();
-
+    
     const indice = productos.findIndex((unProducto) => unProducto.id === idBuscado);
-
+    let mensaje ="";
     if(indice<0){
-        console.log("no se pudo eliminar");
-        return;
+        mensaje= ("no se pudo eliminar");
+        return mensaje;
     }
 
     productos.splice(indice,1);
 
     this.saveProductos(productos);
-    console.log("se elimino correctamente");
+    return mensaje = ("se elimino correctamente");
 }
 
 async deleteAll(){

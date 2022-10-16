@@ -79,3 +79,19 @@ rutaProductos.put('/:id', async (req, res) =>{
 		data: nuevo,
 	})
 })
+rutaProductos.delete('/id', async (req, res) => {
+    const id = req.params.id;
+
+   if(id < 0){
+        return res.status(404).json({
+            msg: "el usuario no existe"
+        })
+    }
+
+    const mensaje = await producto.deleteById(id);
+
+    res.json({
+        msg: `Borrando objet con id ${id}, ${mensaje}`,
+        
+    })
+})
