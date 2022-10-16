@@ -49,3 +49,33 @@ rutaProductos.post('/', async (req, res) => {
 		data: ultimo
 })
 });
+
+rutaProductos.put('/:id', async (req, res) =>{
+    const id = req.params.id;
+    const {title, price} = req.body;
+
+	if(id < 0){
+		return res.status(404).json({
+			msg: "el usuario no existe"
+		})
+	}
+
+	if(!title || !price) {
+		return res.status(400).json({
+			msg: "Campos invalidos :( "
+		})
+	}
+
+    const nuevoProducto = {
+        title,
+        price,
+        id
+    }
+
+    const nuevo = await producto.putID(id, nuevoProducto)
+
+    res.json({
+		msg: `Modificando objet con id ${id}`,
+		data: nuevo,
+	})
+})

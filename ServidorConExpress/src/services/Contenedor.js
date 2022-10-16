@@ -81,6 +81,25 @@ async deleteById(idBuscado){
 async deleteAll(){
     this.saveProductos([]);
 }
+
+
+async putID(id, nuevoProducto){
+    const productos = await this.obtenerProductos();
+    const title = nuevoProducto.title;
+    const price = nuevoProducto.price;
+
+    const productoGuardar = {
+        title,
+        price,
+        id
+    }
+
+    productos.splice(id, 1, productoGuardar);
+    this.saveProductos(productos);
+
+    return productoGuardar;
+}
+
 }
 
 module.exports=Contenedor;
