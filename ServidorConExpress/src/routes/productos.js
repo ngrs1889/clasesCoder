@@ -17,7 +17,8 @@ rutaProductos.get('/', async (req, res) => {
 )
 
 rutaProductos.get('/:id', async (req, res) => {
-    const productos = await producto.getById();
+    const id = req.params.id;
+    const productos = await producto.getById(id);
     res.json(productos);
     })
     let id = 1;
@@ -79,7 +80,7 @@ rutaProductos.put('/:id', async (req, res) =>{
 		data: nuevo,
 	})
 })
-rutaProductos.delete('/id', async (req, res) => {
+rutaProductos.delete('/:id', async (req, res) => {
     const id = req.params.id;
 
    if(id < 0){
