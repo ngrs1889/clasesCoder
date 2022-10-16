@@ -1,27 +1,22 @@
-[
+[ 
 	{
-		"title": "pasto",
+		"title": "piedra",
 		"price": 5,
-		"id": 1
+		"id": 1,
+		"thumbail": ""
 	},
 	{
-		"title": "pasto",
-		"price": 5,
-		"id": 2
+		"title": "tierra",
+		"price": 10,
+		"id": 2,
+		"thumbail": ""
+
 	},
 	{
-		"title": "pasto",
-		"price": 5,
-		"id": 3
-	},
-	{
-		"title": "pasto",
-		"price": 5,
-		"id": 4
-	},
-	{
-		"title": "pasto",
-		"price": 5,
-		"id": 5
+		"title": "tosca",
+		"price": 520,
+		"id": 3,
+		"thumbail": ""
+
 	}
 ]

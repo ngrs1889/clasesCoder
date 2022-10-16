@@ -35,9 +35,9 @@ rutaProductos.post('/', async (req, res) => {
     console.log(req.body);
     const productoss = await producto.obtenerProductos();
     id = productoss[productoss.length -1]
-    const { title, price} = req.body;
-
-    if (!title || !price){
+    const { title, price, thumbail} = req.body;
+    console.log(title)
+    if (!title || !price || !thumbail){
         return res.status(400).json({
             msg:"campos invalidos :( " 
         })
@@ -46,6 +46,7 @@ rutaProductos.post('/', async (req, res) => {
     const nuevoProducto = {
         title,
         price,
+        thumbail
         
     }
 
@@ -79,7 +80,8 @@ rutaProductos.put('/:id', async (req, res) =>{
     const nuevoProducto = {
         title,
         price,
-        id
+        id,
+        thumbail
     }
 
     const nuevo = await producto.putID(id, nuevoProducto)

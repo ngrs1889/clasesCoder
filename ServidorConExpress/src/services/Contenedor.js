@@ -51,7 +51,8 @@ async save(data){
     const nuevoProducto = {
         title: data.title,
         price:precio,
-        id: id
+        id: id,
+        thumbail: thumbail
     }
 
     productos.push(nuevoProducto);
